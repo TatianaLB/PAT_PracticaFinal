@@ -26,12 +26,18 @@ public class CancionController {
     return ResponseEntity.ok().body(cancionService.getCancionesService());
   }
 
-  @GetMapping("/cancionPorNombre/{id}")
+  @GetMapping("/cancion/{id}")
   public ResponseEntity<Iterable<cancionModel>> getPlaylistByName(@PathVariable String id){
 
 
     //return ResponseEntity.ok().body(id);
 
-    return ResponseEntity.ok().body(cancionService.getCancionesService());
+    return ResponseEntity.ok().body(cancionService.getCancionByIdService(id));
+  }
+
+  @GetMapping("/cancion/delete/{id}")
+  public ResponseEntity<Void> deletePlaylistById(@PathVariable String id){
+    cancionService.deleteCancionByIdService(id);
+    return ResponseEntity.ok().build();
   }
 }

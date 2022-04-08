@@ -11,4 +11,6 @@ public interface playlistService {
   Iterable<playlistModel> getPlaylistByIdService(String id);
 
   Iterable<playlistModel> getPlaylistService();
+
+  void deletePlaylistByIdService(String id);
 }

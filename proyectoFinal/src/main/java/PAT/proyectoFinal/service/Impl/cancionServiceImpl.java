@@ -18,11 +18,16 @@ public class cancionServiceImpl implements cancionService {
 
   @Override
   public Iterable<cancionModel> getCancionesService(){
-    return cancionRepository.getCanciones();
+    return cancionRepository.findAll();
   }
 
   @Override
-  public Iterable<cancionModel> getCancionByNombreService(){
-    return cancionRepository.getCancionByNombre();
+  public Iterable<cancionModel> getCancionByIdService(String id){
+    return cancionRepository.getCancionById(id);
+  }
+
+  @Override
+  public void deleteCancionByIdService(String id){
+    cancionRepository.deleteById(id);
   }
 }

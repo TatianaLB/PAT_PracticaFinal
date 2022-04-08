@@ -34,12 +34,19 @@ public class PlaylistController {
   //LOS TRES DE ARRIBA FUNCIONAN BIEN.
 
   //NO ESTA TERMINADO
-  @GetMapping("/playlistPorNombre/{id}")
+  @GetMapping("/playlist/{id}")
   public ResponseEntity<Iterable<playlistModel>> getPlaylistByName(@PathVariable String id){
 
 
     //return ResponseEntity.ok().body(id);
 
     return ResponseEntity.ok().body(playlistService.getPlaylistByIdService(id));
+  }
+
+  @GetMapping("/playlist/delete/{id}")
+  public ResponseEntity<Void> deletePlaylist(@PathVariable String id){
+    playlistService.deletePlaylistByIdService(id);
+
+    return ResponseEntity.ok().build();
   }
 }

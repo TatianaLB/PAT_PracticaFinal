@@ -8,14 +8,13 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public interface cancionRepository extends CrudRepository<cancionModel,Integer> {
+public interface cancionRepository extends CrudRepository<cancionModel,String> {
 
   AtomicInteger id = new AtomicInteger();
 
-  @Query("SELECT * FROM CANCION")
-  Iterable<cancionModel> getCanciones();
 
-  @Query("SELECT * FROM CANCION WHERE NOMBRE='Billie Jean'")
-  Iterable<cancionModel> getCancionByNombre();
+
+  @Query("SELECT * FROM CANCION WHERE ID=:id")
+  Iterable<cancionModel> getCancionById(String id);
 
 }

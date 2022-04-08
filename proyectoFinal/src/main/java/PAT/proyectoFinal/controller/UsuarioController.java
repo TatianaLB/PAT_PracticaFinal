@@ -26,12 +26,19 @@ public class UsuarioController {
   }
 
 
-  @GetMapping("/usuarioPorNombre/{id}")
-  public ResponseEntity<Iterable<usuarioModel>> getPlaylistByName(@PathVariable String id){
+  @GetMapping("/usuario/{id}")
+  public ResponseEntity<Iterable<usuarioModel>> getUsuarioById(@PathVariable String id){
 
 
     //return ResponseEntity.ok().body(id);
 
-    return ResponseEntity.ok().body(usuarioService.getUsuariosService());
+    return ResponseEntity.ok().body(usuarioService.getUsuarioByIdService(id));
   }
+
+  @GetMapping("/usuario/delete/{id}")
+  public ResponseEntity<Void> deleteUsuarioById(@PathVariable String id){
+    usuarioService.deleteUsuarioByIdService(id);
+    return ResponseEntity.ok().build();
+  }
+
 }

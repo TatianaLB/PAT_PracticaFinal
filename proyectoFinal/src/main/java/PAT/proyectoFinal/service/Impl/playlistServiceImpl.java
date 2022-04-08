@@ -29,8 +29,13 @@ public class playlistServiceImpl implements playlistService {
 
   @Override
   public Iterable<playlistModel> getPlaylistService(){
-    return playlistRepository.findPlaylist();
+    return playlistRepository.findAll();
 
+  }
+
+  @Override
+  public void deletePlaylistByIdService(String id){
+    playlistRepository.deleteById(id);
   }
 
 }

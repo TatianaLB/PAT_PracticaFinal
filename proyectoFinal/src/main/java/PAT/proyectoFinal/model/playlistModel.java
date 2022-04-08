@@ -16,9 +16,7 @@ import javax.persistence.GenerationType;
 
 @Table("PLAYLIST")
 public class playlistModel {
-  //@GeneratedValue(strategy = GenerationType.AUTO)
-  private @Column("ID") @Id
-  String id;
+  @Id
   private @Column("NOMBRE")
   String nombre;
   private @Column("NUMERO_CANCIONES")

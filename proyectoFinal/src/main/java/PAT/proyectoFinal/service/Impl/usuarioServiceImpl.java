@@ -17,6 +17,17 @@ public class usuarioServiceImpl implements usuarioService {
 
   @Override
   public Iterable<usuarioModel> getUsuariosService(){
-    return usuarioRepository.getUsuarios();
+    return usuarioRepository.findAll();
+  }
+
+  @Override
+  public Iterable<usuarioModel> getUsuarioByIdService(String id){
+
+    return usuarioRepository.getUsuarioById(id);
+  }
+
+  @Override
+  public void deleteUsuarioByIdService(String id){
+    usuarioRepository.deleteById(id);
   }
 }

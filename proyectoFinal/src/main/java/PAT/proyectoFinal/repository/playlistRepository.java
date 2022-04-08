@@ -9,16 +9,14 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public interface playlistRepository extends CrudRepository<playlistModel,Integer> {
+public interface playlistRepository extends CrudRepository<playlistModel,String> {
 
-  @Query("SELECT * FROM PLAYLIST")
-  Iterable<playlistModel> getPlaylists();
 
-  @Query("SELECT * FROM PLAYLIST WHERE ID='1'")
-  Iterable<playlistModel> findPlaylist();
 
-  @Query("SELECT * FROM PLAYLIST WHERE ID=:id")
-  Iterable<playlistModel> findPlaylistById(@Param("id") String id);
+
+
+  @Query("SELECT * FROM PLAYLIST WHERE NOMBRE=:nombre")
+  Iterable<playlistModel> findPlaylistById(@Param("nombre") String nombre);
 
 }
 

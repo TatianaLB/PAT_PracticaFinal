@@ -9,6 +9,8 @@ public interface cancionService {
 
   Iterable<cancionModel> getCancionesService();
 
-  Iterable<cancionModel> getCancionByNombreService();
+  Iterable<cancionModel> getCancionByIdService(String id);
+
+  void deleteCancionByIdService(String id);
 
 }

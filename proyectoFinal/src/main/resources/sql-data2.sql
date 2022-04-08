@@ -1,2 +1,4 @@
 INSERT INTO PLAYLIST VALUES ('1','Favoritos','23');
 INSERT INTO PLAYLIST VALUES ('2','Mis Canciones','10');
+INSERT INTO PLAYLIST VALUES ('3','Latino Calienteee','189');
+
