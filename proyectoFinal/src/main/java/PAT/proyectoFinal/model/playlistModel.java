@@ -7,15 +7,18 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
 @Table("PLAYLIST")
 public class playlistModel {
-
+  //@GeneratedValue(strategy = GenerationType.AUTO)
   private @Column("ID") @Id
-  int id;
+  String id;
   private @Column("NOMBRE")
   String nombre;
   private @Column("NUMERO_CANCIONES")

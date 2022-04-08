@@ -16,7 +16,7 @@ public class usuarioServiceImpl implements usuarioService {
 
 
   @Override
-  public List<usuarioModel> getUsuariosService(){
+  public Iterable<usuarioModel> getUsuariosService(){
     return usuarioRepository.getUsuarios();
   }
 }

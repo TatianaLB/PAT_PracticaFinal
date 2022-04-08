@@ -17,7 +17,12 @@ public class cancionServiceImpl implements cancionService {
   private cancionRepository cancionRepository;
 
   @Override
-  public List<cancionModel> getCancionesService(){
+  public Iterable<cancionModel> getCancionesService(){
     return cancionRepository.getCanciones();
+  }
+
+  @Override
+  public Iterable<cancionModel> getCancionByNombreService(){
+    return cancionRepository.getCancionByNombre();
   }
 }

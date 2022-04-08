@@ -13,12 +13,26 @@
 <body>
 <br>
     <center>
-    <form action="/api/v1/playlists" onsubmit="return ListarPlaylists()" method="get">
-        <label for="nombre">Buscar tus Playlists: </label>
-        <input type="text" id="nombre" placeholder="e.g. Favoritos">
+        <form >
+            <label for="playlist">Buscar Playlists: </label>
+            <input type="text" id="playlist" placeholder="e.g. Favoritos">
+            <br><br>
+        </form>
+        <button onclick="playlistPorId()">Submit</button>
         <br><br>
-        <input type="submit">
-    </form>
+        <form action="/api/v1/cancionPorNombre" onsubmit="return ListarCanciones()" method="get">
+            <label for="cancion">Buscar Canciones: </label>
+            <input type="text" id="cancion" placeholder="e.g. Billie Jean">
+            <br><br>
+            <input type="submit">
+        </form>
+        <br><br>
+        <form action="/api/v1/usuarioPorNombre" onsubmit="return ListarUsuarios()" method="get">
+            <label for="usuario">Buscar Usuarios: </label>
+            <input type="text" id="usuario" placeholder="e.g. Victor">
+            <br><br>
+            <input type="submit">
+        </form>
     </center>
     
     

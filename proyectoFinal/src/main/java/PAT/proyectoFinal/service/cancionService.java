@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface cancionService {
 
-  List<cancionModel> getCancionesService();
+  Iterable<cancionModel> getCancionesService();
+
+  Iterable<cancionModel> getCancionByNombreService();
 
 }

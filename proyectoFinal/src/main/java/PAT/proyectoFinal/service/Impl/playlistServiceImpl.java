@@ -17,14 +17,20 @@ public class playlistServiceImpl implements playlistService {
 
 
   @Override
-  public List<playlistModel> getPlaylistsService(){
-    return playlistRepository.getPlaylists();
+  public Iterable<playlistModel> getPlaylistsService(){
+    return playlistRepository.findAll();
   }
 
   @Override
-  public List<playlistModel> getPlaylistByNombreService(String nombre){
+  public Iterable<playlistModel> getPlaylistByIdService(String id){
 
-    return playlistRepository.findPlaylistByName(nombre);
+    return playlistRepository.findPlaylistById(id);
+  }
+
+  @Override
+  public Iterable<playlistModel> getPlaylistService(){
+    return playlistRepository.findPlaylist();
+
   }
 
 }

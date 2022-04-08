@@ -21,45 +21,16 @@ import java.util.List;
 @Controller
 public class mainController {
 
-  @Autowired
-  usuarioService usuarioService;
-
-  @Autowired
-  cancionService cancionService;
-
-  @Autowired
-  playlistService playlistService;
-
-  @GetMapping("/api/v1/usuarios")
-  public ResponseEntity<List<usuarioModel>> getUsuarios(){
-    return ResponseEntity.ok().body(usuarioService.getUsuariosService());
-  }
-
-  @GetMapping("api/v1/canciones")
-  public ResponseEntity<List<cancionModel>> getCanciones(){
-    return ResponseEntity.ok().body(cancionService.getCancionesService());
-  }
-
-  @GetMapping("api/v1/playlists")
-  public ResponseEntity<List<playlistModel>> getPlaylists(){
-
-    HttpHeaders responseHeaders = new HttpHeaders();
-    responseHeaders.set("Result", "OK");
-    System.out.println(responseHeaders);
-    return new ResponseEntity<List<playlistModel>>(playlistService.getPlaylistsService(),responseHeaders, HttpStatus.OK);
-
-    //return ResponseEntity.ok().body(playlistService.getPlaylistsService());
-  }
-
-  //LOS TRES DE ARRIBA FUNCIONAN BIEN.
-
-  //NO ESTA TERMINADO
-  @PostMapping("api/v1/playlistPorNombre")
-  public ResponseEntity<List<playlistModel>> getPlaylistByName(@RequestBody String nombre){
 
 
-    return ResponseEntity.ok().body(playlistService.getPlaylistByNombreService(nombre));
 
-  }
+
+
+
+
+
+
+
+
 
 }

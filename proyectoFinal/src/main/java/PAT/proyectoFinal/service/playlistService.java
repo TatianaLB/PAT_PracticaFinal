@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface playlistService {
 
-  List<playlistModel> getPlaylistsService();
+  Iterable<playlistModel> getPlaylistsService();
 
-  List<playlistModel> getPlaylistByNombreService(String name);
+  Iterable<playlistModel> getPlaylistByIdService(String id);
+
+  Iterable<playlistModel> getPlaylistService();
 }

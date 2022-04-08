@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface usuarioService {
 
-  List<usuarioModel> getUsuariosService();
+  Iterable<usuarioModel> getUsuariosService();
 
 }

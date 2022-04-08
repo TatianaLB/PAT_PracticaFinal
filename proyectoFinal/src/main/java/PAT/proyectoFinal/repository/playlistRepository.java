@@ -12,8 +12,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public interface playlistRepository extends CrudRepository<playlistModel,Integer> {
 
   @Query("SELECT * FROM PLAYLIST")
-  List<playlistModel> getPlaylists();
+  Iterable<playlistModel> getPlaylists();
 
-  @Query(value = "SELECT p FROM PLAYLIST WHERE p.nombre LIKE %?1%")
-  List<playlistModel> findPlaylistByName(String nombre);
+  @Query("SELECT * FROM PLAYLIST WHERE ID='1'")
+  Iterable<playlistModel> findPlaylist();
+
+  @Query("SELECT * FROM PLAYLIST WHERE ID=:id")
+  Iterable<playlistModel> findPlaylistById(@Param("id") String id);
+
 }
+
+
+//DUDAS
+//1. Como puedo hacer queries que cojan un input por el metodo que se lo pueda pasar mediante un HTTP request
+

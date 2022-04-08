@@ -12,5 +12,5 @@ import java.util.List;
 public interface usuarioRepository extends CrudRepository<usuarioModel,String> {
 
   @Query("SELECT * FROM USUARIO")
-  List<usuarioModel> getUsuarios();
+  Iterable<usuarioModel> getUsuarios();
 }
