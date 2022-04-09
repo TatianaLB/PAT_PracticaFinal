@@ -30,4 +30,23 @@ public class usuarioServiceImpl implements usuarioService {
   public void deleteUsuarioByIdService(String id){
     usuarioRepository.deleteById(id);
   }
+
+  @Override
+  public String compararYCrearUsuarioService(usuarioModel usuario){
+
+    String username = usuario.getUsername();
+    boolean usuarioExists = usuarioRepository.existsById(username);
+    if(usuarioExists){
+      return "User Already Exists.";
+    }else{
+      String nombre = usuario.getNombre();
+      String apellido = usuario.getApellido();
+      String email = usuario.getEmail();
+      int edad = usuario.getEdad();
+      String password = usuario.getPassword();
+      usuarioRepository.crearUsuario(username,nombre,apellido,email,edad,password);
+      return "OK";
+    }
+
+  }
 }

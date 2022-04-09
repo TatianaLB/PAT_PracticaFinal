@@ -19,6 +19,5 @@ public class playlistModel {
   @Id
   private @Column("NOMBRE")
   String nombre;
-  private @Column("NUMERO_CANCIONES")
-  String numeroCanciones;
+
 }

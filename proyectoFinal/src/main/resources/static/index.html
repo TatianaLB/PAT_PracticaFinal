@@ -14,36 +14,39 @@
 <br>
     <center>
         <form >
-            <label for="playlistId">Buscar Playlists: </label>
+            <label for="playlistId">Playlists: </label>
             <input type="text" id="playlistId" placeholder="e.g. Favoritos">
             <br><br>
         </form>
-        <button onclick="PlaylistPorId()">Search</button>
-        <button onclick="BorraPlaylistPorId()">Delete</button>
+        <button onclick="PlaylistPorId()">Buscar</button>
+        <button onclick="BorraPlaylistPorId()">Borrar</button>
+        <button onclick="location.href = 'createPlaylist.html' ">Crear</button>
 
         <br><br>
         <form >
-            <label for="cancionId">Buscar Canciones: </label>
-            <input type="text" id="cancionId" placeholder="e.g. Billie Jean">
+            <label for="cancionId">Canciones: </label>
+            <input type="text" id="cancionId" placeholder="e.g. 1 (Buscar por ID)">
             <br><br>
         </form>
-        <button onclick="CancionPorId()">Search</button>
-        <button onclick="BorraCancionPorId()">Delete</button>
+        <button onclick="CancionPorId()">Buscar</button>
+        <button onclick="BorraCancionPorId()">Borrar</button>
+        <button onclick = "location.href ='createCancion.html'">Cancion</button>
 
         <br><br>
         <form >
-            <label for="usuarioUsername">Buscar Usuarios: </label>
-            <input type="text" id="usuarioUsername" placeholder="e.g. Victor">
+            <label for="usuarioUsername">Usuarios: </label>
+            <input type="text" id="usuarioUsername" placeholder="e.g. vicstroyer">
             <br><br>
         </form>
-        <button onclick="UsuarioPorId()">Search</button>
-        <button onclick="BorraUsuarioPorId()">Delete</button>
+        <button onclick="UsuarioPorId()">Buscar</button>
+        <button onclick="BorraUsuarioPorId()">Borrar</button>
+        <button onclick="location.href='signUp.html'">Crear</button>
 
 
     </center>
-    
-    
-    
+
+
+
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

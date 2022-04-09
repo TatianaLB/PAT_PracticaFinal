@@ -13,4 +13,6 @@ public interface cancionService {
 
   void deleteCancionByIdService(String id);
 
+  void createCancionService(cancionModel cancion);
+
 }

@@ -8,11 +8,12 @@ import PAT.proyectoFinal.repository.cancionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class cancionServiceImpl implements cancionService {
 
-
+  AtomicInteger id = new AtomicInteger();
   @Autowired
   private cancionRepository cancionRepository;
 
@@ -29,5 +30,16 @@ public class cancionServiceImpl implements cancionService {
   @Override
   public void deleteCancionByIdService(String id){
     cancionRepository.deleteById(id);
+  }
+
+  @Override
+  public void createCancionService(cancionModel cancion){
+    int id1 = id.getAndIncrement();
+    String nombre = cancion.getNombre();
+    String playlist = cancion.getPlaylist();
+    String artista = cancion.getArtista();
+    String album = cancion.getAlbum();
+    int longitud = cancion.getLongitud();
+    cancionRepository.createCancion(id1,nombre,playlist,artista,album,longitud);
   }
 }

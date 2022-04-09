@@ -38,4 +38,14 @@ public class playlistServiceImpl implements playlistService {
     playlistRepository.deleteById(id);
   }
 
+  @Override
+  public void createPlaylistByIdService(String id){
+    playlistRepository.createPlaylistById(id);
+  }
+
+  @Override
+  public boolean checkIfPlaylistExistsService(String id){
+    boolean exists = playlistRepository.existsById(id);
+    return exists;
+  }
 }

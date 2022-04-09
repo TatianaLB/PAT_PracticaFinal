@@ -1,5 +1,6 @@
 package PAT.proyectoFinal.controller;
 
+import PAT.proyectoFinal.exception.PlaylistAlreadyExistsException;
 import PAT.proyectoFinal.model.playlistModel;
 import PAT.proyectoFinal.service.playlistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import PAT.proyectoFinal.service.playlistService;
 
@@ -48,5 +50,20 @@ public class PlaylistController {
     playlistService.deletePlaylistByIdService(id);
 
     return ResponseEntity.ok().build();
+  }
+
+
+  @GetMapping("/playlist/create/{id}")
+  public ResponseEntity<String> createPlaylist(
+          @PathVariable String id) {
+    boolean checkAlreadyExists = playlistService.checkIfPlaylistExistsService(id);
+    if(checkAlreadyExists){
+      throw new PlaylistAlreadyExistsException();
+    }else{
+      playlistService.createPlaylistByIdService(id);
+      return new ResponseEntity<>("{\"result\" : \"OK\"}", HttpStatus.OK);
+    }
+
+
   }
 }

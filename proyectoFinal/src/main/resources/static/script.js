@@ -1,40 +1,14 @@
-//async function ListarPlaylists(){
-//
-////Le pasamos el parametro por el body del request o mediante un parametro del query?
-//    try {
-//        var inputValue = document.getElementById("playlist").value;
-//        var address = '/api/v1/playlistPorNombre/'+inputValue;
-//        fetch(address, {
-//            method: 'GET',
-//            headers: {
-//                'Content-Type': 'application/json'
-//            },
-//            })
-//            .then(response => response.json())
-//            .then(data => {
-//                //HttpStatus status = data.getStatusCode();
-//                //POR QUE NO ME DEVUELVE NADA... NO ME COGE EL STATUS CODE.
-//                if(!!data) {
-//                    alert("Your playlists have been loaded.");
-//                } else {
-//                    alert("You don't have any playlists.");
-//
-//                }
-//                location.href = "api/v1/playListPorNombre/"+inputValue;
-//                return data;
-//
-//            });
-//
-//    } catch (err) {
-//        console.error(err.message);
-//    }
-//    return false;
-//
-//}
+//Funciones para buscar.
 
 function PlaylistPorId(){
     var inputValue = document.getElementById("playlistId").value;
-    var address = '/api/v1/playlist/'+inputValue;
+    var address;
+
+    if(inputValue == '' || inputValue == 'all'){
+        address = '/api/v1/playlists';
+    }else{
+        address = '/api/v1/playlist/'+inputValue;
+    }
     console.log(address);
     window.location.href = address;
     return false;
@@ -42,23 +16,36 @@ function PlaylistPorId(){
 }
 function CancionPorId(){
     var inputValue = document.getElementById("cancionId").value;
-    var address = '/api/v1/cancion/'+inputValue;
-    console.log(address);
+    var address;
+
+        if(inputValue == '' || inputValue == 'all'){
+            address = '/api/v1/canciones';
+        }else{
+            address = '/api/v1/cancion/'+inputValue;
+        }
     window.location.href = address;
     return false;
 
 }
 function UsuarioPorId(){
     var inputValue = document.getElementById("usuarioUsername").value;
-    var address = '/api/v1/usuario/'+inputValue;
-    console.log(address);
+    var address;
+        if(inputValue == '' || inputValue == 'all'){
+            address = '/api/v1/usuarios';
+        }else{
+            address = '/api/v1/usuario/'+inputValue;
+        }
     window.location.href = address;
     return false;
 
 }
 
 
+
+//Funciones para borrar.
 function BorraPlaylistPorId(){
+
+
     var inputValue = document.getElementById("playlistId").value;
     var address = '/api/v1/playlist/delete/'+inputValue;
     var currentAddress = window.location.href;
@@ -93,67 +80,32 @@ function BorraUsuarioPorId(){
 
 
 
+//funciones para crear.
 
-//
-//async function ListarCanciones(){
-//
-//    try {
-//        var inputValue = document.getElementById("cancion").value;
-//        var address = '/api/v1/cancionPorNombre';
-//        fetch(address, {
-//            method: 'GET',
-//            headers: {
-//                'Content-Type': 'application/json'
-//            },
-//            })
-//            .then(response => response.json())
-//            .then(data => {
-//                HttpStatus status = data.getStatusCode();
-//                return data;
-//                //POR QUE NO ME DEVUELVE NADA... NO ME COGE EL STATUS CODE.
-//                if(!!data) {
-//                    alert("Your playlists have been loaded.");
-//                } else {
-//                    alert("You don't have any playlists.");
-//
-//                }
-//            });
-//
-//    } catch (err) {
-//        console.error(err.message);
-//    }
-//    return false;
-//
-//}
-//
-//
-//async function ListarUsuarios(){
-//
-//    try {
-//        var inputValue = document.getElementById("usuario").value;
-//        var address = '/api/v1/usuarioPorNombre';
-//        fetch(address, {
-//            method: 'GET',
-//            headers: {
-//                'Content-Type': 'application/json'
-//            },
-//            })
-//            .then(response => response.json())
-//            .then(data => {
-//                HttpStatus status = data.getStatusCode();
-//                return data;
-//                //POR QUE NO ME DEVUELVE NADA... NO ME COGE EL STATUS CODE.
-//                if(!!data) {
-//                    alert("Your playlists have been loaded.");
-//                } else {
-//                    alert("You don't have any playlists.");
-//
-//                }
-//            });
-//
-//    } catch (err) {
-//        console.error(err.message);
-//    }
-//    return false;
-//
-//}
+function CreatePlaylistMethod(){
+    try {
+        var inputValue1 = document.getElementById("playlist").value;
+        const address = 'api/v1/playlist/create/'+inputValue1;
+        fetch(address, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if(data.result == "OK") {
+                    alert("Playlist Created");
+                    document.location.href="/api/v1/playlists";
+                }else {
+                    alert(data.result);
+                }
+            });
+
+    } catch (err) {
+        console.error(err.message);
+    }
+    return false;
+
+}

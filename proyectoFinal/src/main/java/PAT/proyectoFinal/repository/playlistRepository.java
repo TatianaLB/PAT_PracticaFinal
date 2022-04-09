@@ -2,6 +2,7 @@ package PAT.proyectoFinal.repository;
 
 
 import PAT.proyectoFinal.model.playlistModel;
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -15,8 +16,12 @@ public interface playlistRepository extends CrudRepository<playlistModel,String>
 
 
 
-  @Query("SELECT * FROM PLAYLIST WHERE NOMBRE=:nombre")
-  Iterable<playlistModel> findPlaylistById(@Param("nombre") String nombre);
+  @Query("SELECT * FROM PLAYLIST WHERE NOMBRE=:id")
+  Iterable<playlistModel> findPlaylistById(@Param("id") String id);
+
+  @Modifying
+  @Query("INSERT INTO PLAYLIST (NOMBRE) VALUES (:id)")
+  void createPlaylistById(@Param("id") String id);
 
 }
 

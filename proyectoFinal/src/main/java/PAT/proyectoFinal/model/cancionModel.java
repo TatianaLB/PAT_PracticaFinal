@@ -19,7 +19,7 @@ import javax.persistence.GenerationType;
 public class cancionModel {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private @Column("ID") @Id
-  String id;
+  int id;
   private @Column("NOMBRE")
   String nombre;
   private @Column("PLAYLIST")

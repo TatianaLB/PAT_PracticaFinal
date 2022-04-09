@@ -4,12 +4,12 @@ import PAT.proyectoFinal.model.cancionModel;
 import PAT.proyectoFinal.model.playlistModel;
 import PAT.proyectoFinal.service.cancionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import PAT.proyectoFinal.service.cancionService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -36,8 +36,22 @@ public class CancionController {
   }
 
   @GetMapping("/cancion/delete/{id}")
-  public ResponseEntity<Void> deletePlaylistById(@PathVariable String id){
+  public ResponseEntity<Void> deleteCancionById(@PathVariable String id){
     cancionService.deleteCancionByIdService(id);
     return ResponseEntity.ok().build();
+  }
+
+  @PostMapping("/cancion/create")
+  public ResponseEntity<String> createCancionById(
+          @RequestBody cancionModel cancion,
+          BindingResult bindingResult){
+
+    if(bindingResult.hasErrors()){
+      return new ResponseEntity<String>("{\"result\" : \"KO\"}", HttpStatus.BAD_REQUEST);
+    }else{
+      cancionService.createCancionService(cancion);
+      return new ResponseEntity<String>("{\"result\" : \"OK\"}", HttpStatus.OK);
+    }
+
   }
 }
