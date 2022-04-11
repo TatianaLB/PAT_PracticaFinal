@@ -13,7 +13,15 @@ public class UserExceptionHandler {
     return new ResponseEntity<>("{\"result\" : \"User already exists.\"}", HttpStatus.CONFLICT);
   }
 
+  @ExceptionHandler(value = UserDoesntExistLogInException.class)
+  public ResponseEntity<Object> exception(UserDoesntExistLogInException exception){
+    return new ResponseEntity<>("{\"result\" : \"User doesn't exist.\"}", HttpStatus.CONFLICT);
+  }
 
+  @ExceptionHandler(value = WrongPasswordLogInException.class)
+  public ResponseEntity<Object> exception(WrongPasswordLogInException exception){
+    return new ResponseEntity<>("{\"result\" : \"Wrong Password.\"}", HttpStatus.CONFLICT);
+  }
 
 
 }

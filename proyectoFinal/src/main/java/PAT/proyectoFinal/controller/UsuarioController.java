@@ -1,7 +1,8 @@
 package PAT.proyectoFinal.controller;
 
 import PAT.proyectoFinal.exception.UserAlreadyExistsException;
-import PAT.proyectoFinal.model.playlistModel;
+import PAT.proyectoFinal.exception.UserDoesntExistLogInException;
+import PAT.proyectoFinal.exception.WrongPasswordLogInException;
 import PAT.proyectoFinal.model.usuarioModel;
 import PAT.proyectoFinal.service.usuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import PAT.proyectoFinal.service.usuarioService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/api/v1")
@@ -57,7 +55,28 @@ public class UsuarioController {
         throw new UserAlreadyExistsException();
       }
     }
+  }
 
+  @PostMapping("/login") //HACE FALTA EL CODIGO DE VERIFICACION Y TO ESO DEL NUEVO TEMA.
+  public ResponseEntity<String> compararUsuario(
+          @RequestBody usuarioModel usuario,
+          BindingResult bindingResult){
+
+    if (bindingResult.hasErrors()) {
+      return new ResponseEntity<String>("{\"result\" : \"KO\"}", HttpStatus.BAD_REQUEST);
+    }
+
+    String result = usuarioService.LogInUsuarioService(usuario);
+
+    if(result.equals("LogIn")){
+      return new ResponseEntity<String>("{\"result\" : \"OK\"}", HttpStatus.OK);
+    }else if(result.equals("Not Found")){
+      throw new UserDoesntExistLogInException();
+    }else if(result.equals("Wrong Password")){
+      throw new WrongPasswordLogInException();
+    }
+
+    return new ResponseEntity<String>("{\"result\" : \"KO\"}", HttpStatus.BAD_REQUEST);
 
 
 
@@ -65,3 +84,5 @@ public class UsuarioController {
 
 
 }
+
+

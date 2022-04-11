@@ -10,4 +10,5 @@ public interface usuarioService {
   Iterable<usuarioModel> getUsuarioByIdService(String id);
   void deleteUsuarioByIdService(String id);
   String compararYCrearUsuarioService(usuarioModel usuario);
+  String LogInUsuarioService(usuarioModel usuasio);
 }

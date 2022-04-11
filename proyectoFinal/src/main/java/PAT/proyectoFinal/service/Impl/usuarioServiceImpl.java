@@ -49,4 +49,24 @@ public class usuarioServiceImpl implements usuarioService {
     }
 
   }
+
+  @Override
+  public String LogInUsuarioService(usuarioModel usuario){
+
+    String username = usuario.getUsername();
+    String obtainedPassword = usuario.getPassword();
+    String password;
+    boolean usuarioExists = usuarioRepository.existsById(username);
+
+    if(usuarioExists){
+      password =  usuarioRepository.getPasswordFromUsername(username);
+      if(password.equals(obtainedPassword)){
+        return "LogIn";
+      }else{
+        return "Wrong Password";
+      }
+    }else{
+      return "Not Found";
+    }
+  }
 }

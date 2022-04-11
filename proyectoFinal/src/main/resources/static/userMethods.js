@@ -41,3 +41,41 @@ async function signUp(){
     return false;
 
 }
+
+async function LogIn(){
+    try {
+        var usuario = await document.getElementById("usuarioLogin").value;
+        var password = await document.getElementById("passwordLogin").value;
+
+
+
+        var data = {"username": usuario,
+                    "password":password
+                    };
+        console.log(data);
+        const address = 'api/v1/login';
+        fetch(address, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if(data.result == "OK") {
+                    alert("Logged in");
+                    document.location.href="/api/v1/usuario/"+usuario;
+                } else {
+                    alert(data.result);
+                    document.location.href="signUp.html"
+                }
+            });
+
+    } catch (err) {
+        console.error(err.message);
+    }
+    return false;
+
+}

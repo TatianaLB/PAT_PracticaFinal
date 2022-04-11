@@ -27,4 +27,7 @@ public interface usuarioRepository extends CrudRepository<usuarioModel,String> {
                     String email,
                     int edad,
                     String password);
+
+  @Query("SELECT PASSWORD FROM USUARIO WHERE USERNAME=:id")
+  String getPasswordFromUsername(@Param("id") String id);
 }
